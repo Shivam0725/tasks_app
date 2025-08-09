@@ -1,0 +1,50 @@
+{
+  "users": [
+    {
+      "id": "u_me3x8wzsacmd0c",
+      "name": "Dev",
+      "email": "dev@gmail.com",
+      "passwordHash": "$2a$10$7nDou3oJtT5Y4tyjC9WFHO7jtIanKxRfOsfczjInmdKstDok2eUuy"
+    },
+    {
+      "id": "u_me42b5cr8ktwvg",
+      "name": "ABC",
+      "email": "abc@gmail.com",
+      "passwordHash": "$2a$10$khYhYRCSYLy.JTO36dzN2uAV4bwjKlvWSDElTta.H176knqS8zYz6"
+    }
+  ],
+  "boards": [
+    {
+      "id": "b_me3x9brh6o658t",
+      "userId": "u_me3x8wzsacmd0c",
+      "name": "Study",
+      "createdAt": "2025-08-09T07:17:03.821Z"
+    },
+    {
+      "id": "b_me3xaca4d185bs",
+      "userId": "u_me3x8wzsacmd0c",
+      "name": "Sports",
+      "createdAt": "2025-08-09T07:17:51.148Z"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "t_me3x9vuu77dpm1",
+      "boardId": "b_me3x9brh6o658t",
+      "title": "Physics",
+      "description": "Solve jee numericals",
+      "status": "pending",
+      "dueDate": "2025-08-09",
+      "createdAt": "2025-08-09T07:17:29.862Z"
+    },
+    {
+      "id": "t_me432lascf7ref",
+      "boardId": "b_me3x9brh6o658t",
+      "title": "chemistry",
+      "description": "questions",
+      "status": "pending",
+      "dueDate": "2025-08-09",
+      "createdAt": "2025-08-09T09:59:47.284Z"
+    }
+  ]
+}
