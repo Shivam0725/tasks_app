@@ -35,6 +35,18 @@
       "name": "Shivam Tomar",
       "email": "shivam@gmail.com",
       "passwordHash": "$2a$10$Rx5pSS6lPKHDASd3crdR7.yXIlMAqwrfmD7.44vw8S29CppBClS3i"
+    },
+    {
+      "id": "u_me58b06lz20gnf",
+      "name": "Ayu",
+      "email": "ayu@gmail.com",
+      "passwordHash": "$2a$10$YkluGGQBYUDxd.53vOvn2.HFC5WrqUnJNqnGTVCtjAk90sVMOaVlW"
+    },
+    {
+      "id": "u_me58kcvqgnpbth",
+      "name": "min",
+      "email": "min@gmail.com",
+      "passwordHash": "$2a$10$ZZJDo48poDA610X4f8EaMeDcQ.aoykmDdz.ASVkHrSoc522o5Qe0C"
     }
   ],
   "boards": [
