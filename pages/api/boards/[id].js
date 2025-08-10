@@ -1,4 +1,3 @@
-// pages/api/boards/[id].js
 import { getUserFromReq } from "../../../lib/auth";
 import { getBoardById, updateBoard, deleteBoard } from "../../../lib/db";
 

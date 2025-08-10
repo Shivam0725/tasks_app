@@ -1,4 +1,3 @@
-// pages/api/auth/register.js
 import { addUser, getUserByEmail } from "../../../lib/db";
 import bcrypt from "bcryptjs";
 import { signToken, setTokenCookie } from "../../../lib/auth";

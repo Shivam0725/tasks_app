@@ -1,4 +1,3 @@
-// pages/api/auth/me.js
 import { getTokenFromReq, verifyToken } from "../../../lib/auth";
 import { getUserById } from "../../../lib/db";
 

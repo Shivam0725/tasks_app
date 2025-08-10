@@ -1,4 +1,3 @@
-// pages/dashboard.js
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Layout from "../components/Layout";
@@ -69,45 +68,39 @@ export default function Dashboard() {
 
   return (
     <Layout>
-      {/* Personalized welcome */}
-      {user && (
-        <h1
-          style={{
-            fontSize: "2rem",
-            fontWeight: "bold",
-            color: "#218a8aff",
-            marginBottom: "0.25rem"
-          }}
-        >
-          Welcome {user.name} 
-        </h1>
-      )}
-     
-      <h2 style={{ marginTop: "0.5rem" }}>Dashboard</h2>
+      <div className="dashboard-container">
+        <div className="dashboard-header">
+          <div className="welcome-section">
+            <h1>Welcome back, {user?.name || 'User'} 👋</h1>
+            <p className="subtitle">Manage your task boards</p>
+          </div>
+          
+          <form onSubmit={createBoard} className="board-form">
+            <div className="input-group">
+              <input
+                type="text"
+                placeholder="New board name"
+                value={boardName}
+                onChange={(e) => setBoardName(e.target.value)}
+                className="board-input"
+              />
+              <button type="submit" className="create-btn">
+                Create Board
+              </button>
+            </div>
+            {err && <p className="error-message">{err}</p>}
+          </form>
+        </div>
 
-      <div style={{ marginTop: 16, marginBottom: 20 }}>
-        <form onSubmit={createBoard} style={{ display: "flex", gap: 8 }}>
-          <input
-            className="input"
-            placeholder="New board name"
-            value={boardName}
-            onChange={(e) => setBoardName(e.target.value)}
-          />
-          <button className="btn" type="submit">
-            Create
-          </button>
-        </form>
-        {err && <p style={{ color: "crimson" }}>{err}</p>}
-      </div>
-
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <>
-          {boards.length === 0 ? (
-            <p className="small">No boards yet. Create one above.</p>
+        <div className="boards-container">
+          {loading ? (
+            <div className="loading-spinner"></div>
+          ) : boards.length === 0 ? (
+            <div className="empty-state">
+              <p>No boards yet. Create your first board above!</p>
+            </div>
           ) : (
-            <div className="grid">
+            <div className="boards-grid">
               {boards.map((b) => (
                 <BoardCard
                   key={b.id}
@@ -118,8 +111,117 @@ export default function Dashboard() {
               ))}
             </div>
           )}
-        </>
-      )}
+        </div>
+      </div>
+
+      <style jsx>{`
+        .dashboard-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 20px;
+        }
+        
+        .dashboard-header {
+          position: sticky;
+          top: 0;
+          background: var(--bg);
+          padding: 20px 0;
+          z-index: 10;
+          border-bottom: 1px solid #e2e8f0;
+          margin-bottom: 30px;
+        }
+        
+        .welcome-section h1 {
+          font-size: 28px;
+          margin: 0 0 5px 0;
+          color: #0f172a;
+        }
+        
+        .subtitle {
+          color: #64748b;
+          margin: 0 0 20px 0;
+          font-size: 16px;
+        }
+        
+        .board-form {
+          margin-top: 20px;
+        }
+        
+        .input-group {
+          display: flex;
+          gap: 10px;
+          max-width: 600px;
+        }
+        
+        .board-input {
+          flex: 1;
+          padding: 12px 15px;
+          border: 1px solid #cbd5e1;
+          border-radius: 8px;
+          font-size: 16px;
+          transition: border-color 0.2s;
+        }
+        
+        .board-input:focus {
+          outline: none;
+          border-color: #4f46e5;
+        }
+        
+        .create-btn {
+          background: #4f46e5;
+          color: white;
+          border: none;
+          padding: 0 20px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: 500;
+          transition: background 0.2s;
+          white-space: nowrap;
+        }
+        
+        .create-btn:hover {
+          background: #4338ca;
+        }
+        
+        .error-message {
+          color: #dc2626;
+          margin-top: 10px;
+          font-size: 14px;
+        }
+        
+        .boards-container {
+          margin-top: 20px;
+        }
+        
+        .loading-spinner {
+          border: 3px solid #e2e8f0;
+          border-top: 3px solid #4f46e5;
+          border-radius: 50%;
+          width: 30px;
+          height: 30px;
+          animation: spin 1s linear infinite;
+          margin: 50px auto;
+        }
+        
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        
+        .empty-state {
+          text-align: center;
+          padding: 40px 20px;
+          background: #f8fafc;
+          border-radius: 8px;
+          color: #64748b;
+        }
+        
+        .boards-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          gap: 20px;
+        }
+      `}</style>
     </Layout>
   );
 }

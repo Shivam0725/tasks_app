@@ -1,68 +1,113 @@
-// components/BoardCard.js
 import Link from "next/link";
 
 export default function BoardCard({ board, onRename, onDelete }) {
   return (
     <div className="card">
-      <h3>{board.name}</h3>
-      <p className="meta">Created: {new Date(board.createdAt).toLocaleString()}</p>
-
-      <Link href={`/board/${board.id}`} className="open">
-        Open
+      <div className="card-header">
+        <h3>{board.name}</h3>
+        <span className="created-date">
+          Created: {new Date(board.createdAt).toLocaleDateString()}
+        </span>
+      </div>
+      
+      <Link href={`/board/${board.id}`} className="open-btn">
+        Open Board
       </Link>
 
-      <div className="actions">
-        <button className="rename" onClick={() => onRename(board)}>Rename</button>
-        <button className="delete" onClick={() => onDelete(board.id)}>Delete</button>
+      <div className="card-actions">
+        <button className="action-btn rename-btn" onClick={() => onRename(board)}>
+          Rename
+        </button>
+        <button className="action-btn delete-btn" onClick={() => onDelete(board.id)}>
+          Delete
+        </button>
       </div>
 
       <style jsx>{`
         .card {
+          background: white;
+          border-radius: 12px;
+          padding: 20px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
           border: 1px solid #e2e8f0;
-          border-radius: 8px;
-          padding: 16px;
-          background: #fff;
-          box-shadow: 0 2px 8px rgba(2, 6, 23, 0.03);
           display: flex;
           flex-direction: column;
           height: 100%;
+          transition: transform 0.2s, box-shadow 0.2s;
         }
-        .meta {
+        
+        .card:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+          margin-bottom: 15px;
+        }
+        
+        .card-header h3 {
+          margin: 0 0 5px 0;
+          font-size: 18px;
+          color: #0f172a;
+        }
+        
+        .created-date {
           color: #64748b;
           font-size: 12px;
-          margin: 8px 0 12px;
         }
-        .open {
+        
+        .open-btn {
           display: inline-block;
-          padding: 6px 12px;
-          background: #0ea5a4;
-          color: #fff;
+          background: #4f46e5;
+          color: white;
+          padding: 10px 15px;
           border-radius: 6px;
-          text-decoration: none;
-          margin-bottom: 12px;
           text-align: center;
+          text-decoration: none;
+          font-weight: 500;
+          margin: 15px 0;
+          transition: background 0.2s;
         }
-        .actions {
+        
+        .open-btn:hover {
+          background: #4338ca;
+        }
+        
+        .card-actions {
           display: flex;
-          justify-content: space-between;
+          gap: 10px;
           margin-top: auto;
-          padding-top: 12px;
+          padding-top: 15px;
           border-top: 1px solid #e2e8f0;
         }
-        .rename {
-          background: #f1f5f9;
+        
+        .action-btn {
+          flex: 1;
+          padding: 8px 12px;
           border: none;
-          padding: 6px 12px;
           border-radius: 6px;
           cursor: pointer;
+          font-weight: 500;
+          font-size: 14px;
+          transition: all 0.2s;
         }
-        .delete {
-          background: #ef4444;
-          color: white;
-          border: none;
-          padding: 6px 12px;
-          border-radius: 6px;
-          cursor: pointer;
+        
+        .rename-btn {
+          background: #e0e7ff;
+          color: #4f46e5;
+        }
+        
+        .rename-btn:hover {
+          background: #c7d2fe;
+        }
+        
+        .delete-btn {
+          background: #fee2e2;
+          color: #b91c1c;
+        }
+        
+        .delete-btn:hover {
+          background: #fecaca;
         }
       `}</style>
     </div>

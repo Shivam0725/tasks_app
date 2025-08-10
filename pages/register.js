@@ -1,7 +1,7 @@
-// pages/register.js
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Layout from "../components/Layout";
+import Link from "next/link";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -28,17 +28,144 @@ export default function Register() {
 
   return (
     <Layout>
-      <div className="form">
-        <h2>Create account</h2>
-        <form onSubmit={handleSubmit}>
-          <input className="input" placeholder="Full name" value={name} onChange={(e)=>setName(e.target.value)} />
-          <input className="input" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} />
-          <input className="input" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} type="password" />
-          {err && <p style={{color:"crimson"}}>{err}</p>}
-          <button className="btn" type="submit">Register</button>
-        </form>
-        <p style={{marginTop:12}}>Already have an account? <a href="/">Login</a></p>
+      <div className="auth-container">
+        <div className="auth-card">
+          <h2>Create account</h2>
+
+          <form onSubmit={handleSubmit} className="auth-form">
+            <div className="form-group">
+              <input
+                className="form-input"
+                placeholder="Full name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                autoComplete="name"
+              />
+            </div>
+            
+            <div className="form-group">
+              <input
+                className="form-input"
+                placeholder="Email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                autoComplete="email"
+              />
+            </div>
+            
+            <div className="form-group">
+              <input
+                className="form-input"
+                placeholder="Password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                autoComplete="new-password"
+              />
+            </div>
+            
+            {err && <p className="error-message">{err}</p>}
+            
+            <button className="auth-btn" type="submit">
+              Register
+            </button>
+          </form>
+
+          <p className="auth-link">
+            Already have an account?{" "}
+            <Link href="/" className="link">
+              Login
+            </Link>
+          </p>
+        </div>
       </div>
+
+      <style jsx>{`
+        .auth-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: calc(100vh - 120px);
+          padding: 20px;
+        }
+        
+        .auth-card {
+          background: white;
+          border-radius: 12px;
+          padding: 30px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+          width: 100%;
+          max-width: 400px;
+        }
+        
+        .auth-card h2 {
+          margin: 0 0 20px 0;
+          text-align: center;
+        }
+        
+        .auth-form {
+          margin-bottom: 20px;
+        }
+        
+        .form-group {
+          margin-bottom: 15px;
+        }
+        
+        .form-input {
+          width: 100%;
+          padding: 12px 15px;
+          border: 1px solid #cbd5e1;
+          border-radius: 8px;
+          font-size: 16px;
+        }
+        
+        .form-input:focus {
+          outline: none;
+          border-color: #4f46e5;
+        }
+        
+        .auth-btn {
+          width: 100%;
+          background: #4f46e5;
+          color: white;
+          border: none;
+          padding: 12px;
+          border-radius: 8px;
+          font-weight: 500;
+          cursor: pointer;
+          margin-top: 10px;
+        }
+        
+        .auth-btn:hover {
+          background: #4338ca;
+        }
+        
+        .error-message {
+          color: #dc2626;
+          font-size: 14px;
+          margin: 10px 0;
+          text-align: center;
+        }
+        
+        .auth-link {
+          text-align: center;
+          color: #64748b;
+        }
+        
+        .link {
+          color: #4f46e5;
+          text-decoration: none;
+          font-weight: 500;
+        }
+        
+        .link:hover {
+          text-decoration: underline;
+        }
+      `}</style>
     </Layout>
   );
 }

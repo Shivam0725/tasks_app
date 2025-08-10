@@ -1,4 +1,3 @@
-// pages/api/boards/tasks.js
 import { getUserFromReq } from "../../../lib/auth";
 import { getBoardById, getTasksByBoardId } from "../../../lib/db";
 

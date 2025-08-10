@@ -1,4 +1,3 @@
-// pages/api/tasks/[id].js
 import { getUserFromReq } from "../../../lib/auth";
 import { getTaskById, getBoardById, updateTask, deleteTask } from "../../../lib/db";
 
