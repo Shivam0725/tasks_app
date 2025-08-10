@@ -1,4 +1,4 @@
-/* styles/globals.css */
+
 :root{
   --bg:#f8fafc;
   --muted:#64748b;
@@ -56,25 +56,25 @@ h1,h2,h3{ margin:0 0 8px 0; }
   gap:16px;
 }
 
-/* small utilities */
+
 .row { display:flex; gap:8px; align-items:center; }
 .card-list { display:flex; gap:12px; flex-wrap:wrap; }
 .task { border:1px solid #e2e8f0; padding:12px; border-radius:8px; background:#fff; }
 .small { font-size:13px; color:var(--muted); }
 
-/* Add to :root */
+
 :root {
   --bg: #f8fafc;
   --text: #0f172a;
   --card: #ffffff;
   --primary: #4f46e5;
-  /* Dark mode vars */
+  
   --dark-bg: #0f172a;
   --dark-text: #f8fafc;
   --dark-card: #1e293b;
 }
 
-/* Add dark mode class */
+
 .dark {
   background: var(--dark-bg);
   color: var(--dark-text);
@@ -99,7 +99,7 @@ h1,h2,h3{ margin:0 0 8px 0; }
   transform: translateY(-1px);
 }
 
-/* Status badges */
+
 .pending {
   border-left: 4px solid #f59e0b;
 }
@@ -108,7 +108,7 @@ h1,h2,h3{ margin:0 0 8px 0; }
   opacity: 0.8;
 }
 
-/* Add these to your existing globals.css */
+
 :root {
   --bg: #f8fafc;
   --text: #0f172a;
@@ -142,12 +142,12 @@ h1, h2, h3 {
   margin: 0 0 8px 0;
 }
 
-/* Add smooth scrolling behavior */
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Add these animation styles */
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }

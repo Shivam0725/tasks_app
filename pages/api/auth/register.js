@@ -26,7 +26,7 @@ export default function handler(req, res) {
   const token = signToken({ userId: user.id });
   setTokenCookie(res, token);
 
-  // return user minus passwordHash
+ 
   const safeUser = { id: user.id, name: user.name, email: user.email };
   res.status(201).json({ user: safeUser });
 }
